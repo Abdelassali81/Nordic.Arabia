@@ -18,18 +18,17 @@
       direction:rtl;
       transition:all .3s ease-in-out;
     }
-    /* ---------- هيكل الصفحة ---------- */
     header{
       background:var(--light);
       padding:30px 10px 20px;
       text-align:center;
     }
     header img.logo{
-      max-height:120px;
-      margin-bottom:15px;
+      max-height:160px;
+      margin-bottom:20px;
     }
     header h1#title {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
     }
     nav{
       background:var(--light-alt);
@@ -43,7 +42,8 @@
       text-decoration:none;
     }
     nav a:hover{text-decoration:underline;}
-    section{padding:40px 20px;text-align:center;}
+    section{padding:40px 20px;text-align:center;display:none;}
+    section#home-section { display: block; }
     .hero{
       width:100%;
       height:auto;
@@ -59,7 +59,6 @@
       text-align:center;
       padding:15px;
     }
-    /* ---------- أزرار اللغات ---------- */
     .lang-switch{position:absolute;top:10px;left:10px;z-index:10}
     .lang-switch button{
       background:var(--dark);
@@ -75,20 +74,16 @@
 </head>
 <body>
 
-<!-- مفاتيح تغيير اللغة -->
 <div class="lang-switch">
   <button onclick="switchLang('ar')">العربية</button>
   <button onclick="switchLang('en')">English</button>
 </div>
 
-<!-- رأس الصفحة مع الشعار -->
 <header>
-  <!-- ضع ملف الشعار (مثلاً logo.png) في نفس مجلد الصفحة -->
   <img src="logo.png" alt="Nordic Arabia Logo" class="logo" />
   <h1 id="title">Nordic Arabia</h1>
 </header>
 
-<!-- شريط التنقل -->
 <nav>
   <a href="#" id="nav-home">الرئيسية</a>
   <a href="#" id="nav-about">عن الشركة</a>
@@ -96,23 +91,18 @@
   <a href="#" id="nav-contact">اتصل بنا</a>
 </nav>
 
-<!-- قسم ترحيبي + صورة بانر رئيسية -->
 <section id="home-section">
   <h2 id="welcome">مرحباً بكم في Nordic Arabia</h2>
   <p id="description">نحن متخصصون في خدمات البناء والتشييد الحديثة.</p>
-  <!-- ضع هنا صورة بانر رئيسية (مثلاً hero.jpg) -->
   <img src="hero.jpg" alt="مشاريع Nordic Arabia" class="hero" />
 </section>
 
-<!-- قسم عن الشركة -->
 <section id="about-section">
   <h2 id="about-title">عن الشركة</h2>
   <p id="about-text">لدينا خبرة تزيد عن 20 عاماً في مجال المقاولات العامة والهندسة المدنية.</p>
-  <!-- مثال على صورة مشروع -->
   <img src="project1.jpg" alt="مشروع سكني من تنفيذ Nordic Arabia" class="hero" style="max-height:300px" />
 </section>
 
-<!-- قسم الخدمات -->
 <section id="services-section">
   <h2 id="services-title">خدماتنا</h2>
   <ul id="services-list" style="list-style:none;padding:0;font-weight:bold;">
@@ -122,19 +112,51 @@
   </ul>
 </section>
 
-<!-- تذييل -->
+<section id="contact-section">
+  <h2>اتصل بنا</h2>
+  <img src="o.jpg" alt="اتصل بنا" class="hero" />
+</section>
+
 <footer>
   <p id="footer-text">© جميع الحقوق محفوظة - Nordic Arabia 2025</p>
 </footer>
 
 <script>
-  /* ----- نصوص الترجمة ----- */
   const translations={
     ar:{dir:"rtl",title:"Nordic Arabia",nav:["الرئيسية","عن الشركة","الخدمات","اتصل بنا"],welcome:"مرحباً بكم في Nordic Arabia",description:"نحن متخصصون في خدمات البناء والتشييد الحديثة.",aboutTitle:"عن الشركة",aboutText:"لدينا خبرة تزيد عن 20 عاماً في مجال المقاولات العامة والهندسة المدنية.",servicesTitle:"خدماتنا",services:["بناء المباني السكنية والتجارية","التصميم والإشراف الهندسي","إدارة المشاريع"],footer:"© جميع الحقوق محفوظة - Nordic Arabia 2025"},
     en:{dir:"ltr",title:"Nordic Arabia",nav:["Home","About","Services","Contact"],welcome:"Welcome to Nordic Arabia",description:"We specialize in modern construction and civil engineering services.",aboutTitle:"About Us",aboutText:"We have over 20 years of experience in general contracting and engineering.",servicesTitle:"Our Services",services:["Residential and Commercial Construction","Architectural Design & Supervision","Project Management"],footer:"© All rights reserved - Nordic Arabia 2025"}
   };
-  /* ----- دالة التبديل ----- */
-  function switchLang(lang){const t=translations[lang];document.documentElement.lang=lang;document.body.dir=t.dir;document.getElementById("title").textContent=t.title;document.getElementById("nav-home").textContent=t.nav[0];document.getElementById("nav-about").textContent=t.nav[1];document.getElementById("nav-services").textContent=t.nav[2];document.getElementById("nav-contact").textContent=t.nav[3];document.getElementById("welcome").textContent=t.welcome;document.getElementById("description").textContent=t.description;document.getElementById("about-title").textContent=t.aboutTitle;document.getElementById("about-text").textContent=t.aboutText;document.getElementById("services-title").textContent=t.servicesTitle;const servicesList=document.getElementById("services-list");servicesList.innerHTML="";t.services.forEach(s=>{const li=document.createElement("li");li.textContent=s;servicesList.appendChild(li)});document.getElementById("footer-text").textContent=t.footer;}
+
+  function switchLang(lang){
+    const t=translations[lang];
+    document.documentElement.lang=lang;
+    document.body.dir=t.dir;
+    document.getElementById("title").textContent=t.title;
+    document.getElementById("nav-home").textContent=t.nav[0];
+    document.getElementById("nav-about").textContent=t.nav[1];
+    document.getElementById("nav-services").textContent=t.nav[2];
+    document.getElementById("nav-contact").textContent=t.nav[3];
+    document.getElementById("welcome").textContent=t.welcome;
+    document.getElementById("description").textContent=t.description;
+    document.getElementById("about-title").textContent=t.aboutTitle;
+    document.getElementById("about-text").textContent=t.aboutText;
+    document.getElementById("services-title").textContent=t.servicesTitle;
+    const servicesList=document.getElementById("services-list");
+    servicesList.innerHTML="";
+    t.services.forEach(s=>{const li=document.createElement("li");li.textContent=s;servicesList.appendChild(li)});
+    document.getElementById("footer-text").textContent=t.footer;
+  }
+
+  function showSection(idToShow){
+    ['home-section','about-section','services-section','contact-section'].forEach(id=>{
+      document.getElementById(id).style.display = (id === idToShow) ? 'block' : 'none';
+    });
+  }
+
+  document.getElementById("nav-home").onclick = () => showSection('home-section');
+  document.getElementById("nav-about").onclick = () => showSection('about-section');
+  document.getElementById("nav-services").onclick = () => showSection('services-section');
+  document.getElementById("nav-contact").onclick = () => showSection('contact-section');
 </script>
 
 </body>
