@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nordic Arabia / Nordic Arabia</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      background-color: #1c1e2b;
+      color: #f1e7d0;
+      transition: all 0.3s ease-in-out;
+    }
+    header {
+      background-color: #1c1e2b;
+      color: #f1e7d0;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #2a2d3c;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #f1e7d0;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+    footer {
+      background: #2a2d3c;
+      color: #f1e7d0;
+      text-align: center;
+      padding: 10px;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #f1e7d0;
+      color: #1c1e2b;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-switch">
+  <button onclick="switchLang('ar')">العربية</button>
+  <button onclick="switchLang('en')">English</button>
+</div>
+
+<header>
+  <h1 id="title">Nordic Arabia</h1>
+</header>
+
+<nav>
+  <a href="#" id="nav-home">الرئيسية</a>
+  <a href="#" id="nav-about">عن الشركة</a>
+  <a href="#" id="nav-services">الخدمات</a>
+  <a href="#" id="nav-contact">اتصل بنا</a>
+</nav>
+
+<section>
+  <h2 id="welcome">مرحباً بكم في Nordic Arabia</h2>
+  <p id="description">نحن متخصصون في خدمات البناء والتشييد الحديثة.</p>
+</section>
+
+<section>
+  <h2 id="about-title">عن الشركة</h2>
+  <p id="about-text">لدينا خبرة تزيد عن 20 عاماً في مجال المقاولات العامة والهندسة المدنية.</p>
+</section>
+
+<section>
+  <h2 id="services-title">خدماتنا</h2>
+  <ul id="services-list">
+    <li>بناء المباني السكنية والتجارية</li>
+    <li>التصميم والإشراف الهندسي</li>
+    <li>إدارة المشاريع</li>
+  </ul>
+</section>
+
+<footer>
+  <p id="footer-text">© جميع الحقوق محفوظة - Nordic Arabia 2025</p>
+</footer>
+
+<script>
+  const translations = {
+    ar: {
+      dir: "rtl",
+      title: "Nordic Arabia",
+      nav: ["الرئيسية", "عن الشركة", "الخدمات", "اتصل بنا"],
+      welcome: "مرحباً بكم في Nordic Arabia",
+      description: "نحن متخصصون في خدمات البناء والتشييد الحديثة.",
+      aboutTitle: "عن الشركة",
+      aboutText: "لدينا خبرة تزيد عن 20 عاماً في مجال المقاولات العامة والهندسة المدنية.",
+      servicesTitle: "خدماتنا",
+      services: ["بناء المباني السكنية والتجارية", "التصميم والإشراف الهندسي", "إدارة المشاريع"],
+      footer: "© جميع الحقوق محفوظة - Nordic Arabia 2025"
+    },
+    en: {
+      dir: "ltr",
+      title: "Nordic Arabia",
+      nav: ["Home", "About", "Services", "Contact"],
+      welcome: "Welcome to Nordic Arabia",
+      description: "We specialize in modern construction and civil engineering services.",
+      aboutTitle: "About Us",
+      aboutText: "We have over 20 years of experience in general contracting and engineering.",
+      servicesTitle: "Our Services",
+      services: ["Residential and Commercial Construction", "Architectural Design & Supervision", "Project Management"],
+      footer: "© All rights reserved - Nordic Arabia 2025"
+    }
+  };
+
+  function switchLang(lang) {
+    const t = translations[lang];
+    document.documentElement.lang = lang;
+    document.body.dir = t.dir;
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("nav-home").textContent = t.nav[0];
+    document.getElementById("nav-about").textContent = t.nav[1];
+    document.getElementById("nav-services").textContent = t.nav[2];
+    document.getElementById("nav-contact").textContent = t.nav[3];
+    document.getElementById("welcome").textContent = t.welcome;
+    document.getElementById("description").textContent = t.description;
+    document.getElementById("about-title").textContent = t.aboutTitle;
+    document.getElementById("about-text").textContent = t.aboutText;
+    document.getElementById("services-title").textContent = t.servicesTitle;
+
+    const servicesList = document.getElementById("services-list");
+    servicesList.innerHTML = "";
+    t.services.forEach(service => {
+      const li = document.createElement("li");
+      li.textContent = service;
+      servicesList.appendChild(li);
+    });
+
+    document.getElementById("footer-text").textContent = t.footer;
+  }
+</script>
+
+</body>
+</html>
